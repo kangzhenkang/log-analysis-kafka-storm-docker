@@ -9,7 +9,7 @@ public class TestXMPP {
 
   public static void main(String args[]) throws Exception {
 
-    ConnectionConfiguration config = new ConnectionConfiguration("192.168.1.231");
+    ConnectionConfiguration config = new ConnectionConfiguration("192.168.164.60");
     XMPPConnection xmppConnection = new XMPPConnection(config);
     try {
       xmppConnection.connect();
