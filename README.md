@@ -106,16 +106,7 @@ logkafkastorm_zookeeper_1       /opt/zookeeper-3.4.5/bin/z      Up              
 至此，docker算是启动完毕。
 
 ###配置kafka
-运行 start-kafka-shell.sh 脚本，主要是两个工作：
-
- - 1.进入kafka容器；
- - 2.创建topic名为 log-analysis
-
-```
-[root@docker2 log-kafka-storm]# ./start-kafka-shell.sh 
-root@4c7a5d233991:/# $KAFKA_HOME/bin/kafka-topics.sh --create --topic log-analysis --partitions 1 --zookeeper zk --replication-factor 1
-Created topic "log-analysis".
-```
+运行 start-kafka-shell.sh 脚本
 查看kafka的topic是否创建成功
 ```
 root@4c7a5d233991:/# $KAFKA_HOME/bin/kafka-topics.sh --describe --zookeeper zk
@@ -166,7 +157,7 @@ drwxr-xr-x+ 1 ppl None   0 Sep 25 23:53 maven-archiver/
 36971 [main] INFO  backtype.storm.StormSubmitter - Submitting topology log-analysis-topology in distributed mode with conf {"storm.xmpp.server":"192.168.1.231","nimbus.host":"192.168.1.231","storm.xmpp.password":"storm","topology.workers":3,"storm.zookeeper.port":2181,"storm.xmpp.user":"storm","storm.xmpp.to":"ahenrick@sectong.com","nimbus.thrift.port":6627,"storm.zookeeper.servers":["192.168.1.231"],"topology.max.spout.pending":5,"topology.trident.batch.emit.interval.millis":2000}
 37663 [main] INFO  backtype.storm.StormSubmitter - Finished submitting topology: log-analysis-topology
 ```
-jar包上传完毕，Storm UI 应该增加一个 Topology
+在Host上创建/root/sharedata目录，会自动映射该目录到docker实例中，同时将jar到改目录，上传完毕，Storm UI 应该增加一个 Topology
 
 ![这里写图片描述](http://img.blog.csdn.net/20150926000526845)
 点击，进入
